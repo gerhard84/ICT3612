@@ -18,8 +18,8 @@
     <br/>
     <h1>Gerhard Goossens</h1>
     <h1>54808189</h1>
-    <h1>ICT2613 - Portfolio</h1>
-    <h1>2015 - Semester 2</h1>
+    <h1>ICT3613 - Portfolio</h1>
+    <h1>2016 - Semester 2</h1>
 </div>
 
 

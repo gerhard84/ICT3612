@@ -1,98 +1,25 @@
-//////////////////////////////Task1 (a) //////////////////////////
+	<!--////////////////////////////// Task 1 //////////////////////////-->
+	<?php
 
-<?php
-	// Declare variables for task 1a
-	$varInteger = 25;
-	$varDouble = 10.5;
-	$varBoolean = TRUE;
-	$varString = 'Programming is fun';
+	// Declare variables for Task 1
 
-	// Echo string with variables
-	echo "<strong>Integer:</strong> $varInteger<br>";
-	echo "<strong>Double:</strong> $varDouble<br>";
-	echo "<strong>Boolean:</strong> $varBoolean<br>";
-	echo "<strong>String:</strong> $varString<br>";
-?>
+	$number1 = counter(5, 12);
+	$number2 = counter(12, 12);
+	$number3 = counter(25, 30);
 
-//////////////////////////////Task1 (b) //////////////////////////
+	// Function for Task 1
+	function counter($num1, $num2) {
+	 $sum = 0;
+	 for ($i = $num1; $i <= $num2; $i++) {
+		 $sum += $i;
 
-<?php
-	// Declare variables for task 1b
-	$varCaSe = 'Variables is case sensitive';
-	$var1234 = 'Variables can contain numbers';
-	$var_under = 'Variables can contain underscores';
+		}
+		return $sum;
+	}
 
-	// Invalid variable names
-	// $__doubleUnderscore;
-	// $100;
-	// $#567;
+	// Display for Task 1
+	echo "The sum of the values from 5 to 12 is $number1. <br/>";
+	echo "The sum of the values from 12 to 12 is $number2. <br/>";
+	echo "The sum of the values from 25 to 165 is $number3. <br/>";
 
-	// Echo string with variables
-	echo "<strong>Rule 1:</strong> $varCaSe<br/>";
-	echo "<strong>Rule 2:</strong> $var1234<br/>";
-	echo "<strong> Rule 3:</strong> $var_under<br/>";
-?>
-
-//////////////////////////////Task1 (c) //////////////////////////
-
-<?php
-	// Declare variables for task 1c
-	$concat1 = 'ICT';
-	$concat2 = 2613;
-					
-	// Create new variable by concatenating two other variables
-	$module = $concat1 . $concat2;
-
-	// Echo concatenated variable
-	echo "<strong>Module:</strong> $module<br>";
-?>
-
-//////////////////////////////Task1 (d) //////////////////////////
-
-<?php
-	// Declare variable for method 1
-	$count = 5;
-
-	// Increase variable by 3
-	$count = $count + 3;
-
-	// Echo increased variable
-	echo "<strong>Method 1 result :</strong> $count"
-?>
-
-<?php
-	// Declare variable for method 2
-	$count = 5;
-
-	// Use a while loop with a conditional operator to increase the variable
-	// while it is less than or equal to 7 and increase it if it is not.
-	while ($count <= 7) $count ++;
-
-	// Echo increased variable
-	echo "<strong>Method 2 result :</strong> $count"
-?>
-
-<?php
-	// Declare variable for method 3
-	$count = 5;
-
-	// Use a do while loop with a conditional operator to increase the variable
-	// by 1 if it is less than 8
-	do $count ++;
-	while ($count <8);
-
-	// Echo increased variable
-	echo "<strong>Method 2 result :</strong> $count"
-?>
-
-//////////////////////////////Task1 (e) //////////////////////////
-
-<?php
-	// Declare a variable using the date function to format it
-	$_date = date("d F Y");
-					
-	// Echo the formatted date
-	echo "The date is: <strong>$_date</strong>";
-?>
-
-/////////////////////////////////////////////////////////////////
+	?>
