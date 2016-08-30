@@ -1,0 +1,41 @@
+//////////////////////////////Task12 (a) //////////////////////////
+
+<?php
+	$exampleA = "PHP is fun";
+	$exampleAf = strlen($exampleA);
+	echo "<strong>Example:</strong> 'PHP is fun' is <strong>$exampleAf</strong> characters long";
+?>
+
+//////////////////////////////Task12 (b) //////////////////////////
+
+<?php
+	$exampleB = "Gerhard Goossens";
+	$exampleBf = str_replace("Gerhard", "Jennifer", $exampleB);
+	echo "<strong>Example: </strong>In the string, $exampleB is being replaced by <strong>$exampleBf</strong>";
+?>
+
+//////////////////////////////Task12 (c) //////////////////////////
+
+<?php
+	$exampleC = "unisa";
+	$exampleCf = ucfirst($exampleC);
+	echo "<strong>Example: </strong>In the string, the first character is changed to uppercase and returns: <strong> $exampleCf</strong>";
+?>
+
+//////////////////////////////Task12 (d) //////////////////////////
+
+<?php
+	$exampleD = "this semester was extremely short";
+	$exampleDf = ucwords($exampleD);
+	echo "<strong>Example: </strong>In the string, the first character of each word is changed to uppercase and returns:<br> <strong>$exampleDf</strong>";
+?>
+
+//////////////////////////////Task12 (e) //////////////////////////
+
+<?php
+	$exampleE = "ICT2611 ICT2613 ICT2621 ICT2622 ICT2631";
+	$exampleEf = explode(" ", $exampleE);
+	echo "<strong>Example: </strong>$exampleEf[0] $exampleEf[1] $exampleEf[2] $exampleEf[3] $exampleEf[4]";
+?>
+
+///////////////////////////////////////////////////////////////////

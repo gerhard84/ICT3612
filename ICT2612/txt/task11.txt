@@ -1,0 +1,131 @@
+//////////////////////////////Task 11 (../mvc/index.php) //////////////////////////
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+    <title>Task 6</title>
+</head>
+<body>
+<?php include_once("../analyticstracking.php") ?>
+<div class="menu">
+    <?php include '../includes/menu.php';?>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">a) MVC pattern</h3>
+                </div>
+                <div class="panel-body">
+		<h2>Prominent South African political parties</h2>
+		<p>
+		<a href="controller/controller.php?page=parties">List of the most prominent South African political parties</a></br>
+		<a href="controller/controller.php?page=seats">National Assembly seats per party</a></br>
+		</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <iframe src="../txt/task11.txt" height="400" scrolling="yes" width="1200px">
+        <p>Your browser does not support iframes.</p></iframe>
+
+</div>
+</body>
+</html>
+
+//////////////////////////////Task 11 (../mvc/model/model.php) //////////////////////////
+
+<?php
+//the model represents the data structures e.g. it generally  contain functions that help you retrieve, insert, and update information in your database.
+
+  function parties() {
+	return 'ANC, DP, EEF and IFP.';
+	  }
+  
+  function seats() {
+	return 'ANC (249), DP (89), EEF (25) and IFP (10).';
+	}
+  
+?>
+
+//////////////////////////////Task 11 (../mvc/view/view.php) //////////////////////////
+
+<?php
+//The view presents the data sent to it.  This is what the user see when a link is clicked in index.php
+
+  function polParties($partName) { // in controller.php, this function was used as follows "polParties($parties);"  
+    $page = htmlHeader() . 'Prominent political parties, in order of National Assembly seats held, are the '.$partName.htmlFooter().'<br><br><a href=../index.php>Return to menu</a>';
+    echo $page;
+  }
+  
+  function noSeats($noOfSeats) {
+    $page = htmlHeader() . 'The National Assembly seats per political party are: '.$noOfSeats.htmlFooter().'<br><br><a href=../index.php>Return to menu</a>';
+    echo $page;    
+  }
+  
+
+  function htmlHeader() { // just to give the page a HTML header
+    return "<!doctype html><html><head><meta charset=\"utf-8\"><title>SA political parties</title>
+	<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/bootstrap.css\"></head><body>";
+  }
+  
+  function htmlFooter() { // just to give the page a HTML footer
+    return '</body></html>';  
+  }
+?>
+
+//////////////////////////////Task 11 (../mvc/controler/controler.php) //////////////////////////
+
+<?php
+//  the controller is in-between the Model and the View. It organizes how these two pages will be used, depending on what was requested.  
+
+  include_once('../model/model.php');  //include the model.php page
+  include_once('../view/view.php'); //include the view.php page
+   
+  $page = fetchPage(); //set $page to the function fetchPage, which is defined next 
+  
+   
+  function fetchPage() { // to find what key/value pairs were sent from index.php
+    
+     if (isset($_GET["page"])) { //  the function isset is used to ask the question  if a key "page" was sent when a link was clicked on index.php
+		
+		 $pageReq = $_GET["page"]; // if it was, get the value of the key
+       
+	   switch($pageReq) { //let's decide which "page" was requested, and the call the correct function from view.php
+        case "parties":// If the link "<a href="controller/controller.php?page=car">Show me a car</a>"was clicked on the index.php page, then
+           $page = "PARTIES"; // give a variable named $page a value of "PARTIES", which we will use at the bottom of this page
+         break;
+		 
+		  case "seats": //PHP is case sensitive, so price and SEATS (in the line below is not the same). If the link "<a href="controller/controller.php?page=seats">Show me it's price</a>" was clicked on the index.php page, then
+           $page = "SEATS"; // give a $page a value of "SEATS", which we will use at the bottom of this page
+         break;
+         
+		 default: // If the link "<a href="controller/controller.php?page=not sure">Unsure what I want to see</a>"was clicked on the index.php page, then
+           $page = "PARTIES"; // let us give $page a value of "PARTIES". Of course, we could have added this as another case, but one should always have a default to cover for unexpected problems
+         break;
+       }
+     } else { // The link <a href="controller/controller.php">Just let me in!</a> was sent, so there was no key. Let's show them PARTIES.
+       $page = "PARTIES";
+     }
+     
+     return $page; // show the function
+    
+  }
+  
+  
+  if ($page=="SEATS") { //if $page is set to SEATS
+    $seats = seats(); //  get the data on the seats by using the seats()function in model.php
+    noSeats($seats);  // then call the function noSeats in view.php
+  } elseif($page=="PARTIES") { //if $page is set to PARTIES
+    $parties = parties();//  get the data on the parties by using the car()function in model.php
+    polParties($parties);   // then then call the function polParties in view.php  to present the parties data to the user.
+  }
+  
+?>
+
+///////////////////////////////////////////////////////////////////////

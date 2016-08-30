@@ -1,0 +1,32 @@
+//////////////////////////////Task4 ( a ) //////////////////////////
+
+<?php
+	require 'database.php';
+	//The SQL SELECT statement//
+	$sql = "SELECT customerID, firstName, lastName, emailAddress FROM customers";
+	// Put result query in variable
+	$result = $db->query($sql);
+
+	// Create rable
+	echo "<table class='table table-bordered table-hover'>
+		<tr>
+		<th>Name</th>
+		<th>Surname</th>
+		<th>eMail address</th>
+		</tr>";
+	// Output rows
+	while ($row = $result->fetch(PDO::FETCH_ASSOC))  {
+	echo "<form action=task5.php method=post>";
+	echo "<tr>";
+	echo "<td>" . $row['firstName'] . "</td>";
+	echo "<td>" . $row['lastName'] . "</td>";
+	echo "<td>" . $row['emailAddress'] . "</td>";
+	echo "</tr>";
+	echo "</form>";
+	}
+	echo "</table>";
+	// Close connection to DB
+	$db = null;
+?>
+
+///////////////////////////////////////////////////////////////////
