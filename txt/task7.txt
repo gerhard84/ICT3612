@@ -1,28 +1,5 @@
 //////////////////////////////Task 7 ( a ) //////////////////////////
-                                    
-<?php
-	if(isset($_POST['submit'])) {
-		echo '<div class="control-group">';
-		echo '<label class="control-label">Feedback result:</label>';
-		echo '<div class="controls">';
 
-		$studNum = $_POST['studNum'];
-		$answer = $_POST['answer'];
-		$times = $_POST['times'];
-		$comment = $_POST['comment'];
 
-		echo "Student Number: $studNum</br>";
-		echo "First time: $answer</br>";
-		echo "Times done: $times</br>";
-
-	if (isset($_POST['otherMod'])) {
- 	$otherModules = $_POST['otherMod'];
-	foreach($otherModules as $value) {
-		echo 'Other modules:' . ' ' . $value. '<br>';
-		}
-	}
-	echo "Comments: $comment";
-	}
-?>
 
 ////////////////////////////////////////////////////////////////////

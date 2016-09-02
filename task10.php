@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <title>Task 1</title>
+    <title>Task 10</title>
 </head>
 <body>
 <?php include_once("analyticstracking.php") ?>
@@ -11,28 +11,21 @@
     <?php include 'includes/menu.php';?>
 </div>
 
+
 <div class="container">
+  <!--////////////////////////////// Task 10 (a)  //////////////////////////-->
 	<div class="row">
 		<div class="col-md-6">
 			<div class="panel panel-default">
 			    <div class="panel-heading">
-			        <h3 class="panel-title">Task 2 (a) -  Passing argument by reference</h3>
+			        <h3 class="panel-title">Task 10 (a) -  File Management Form</h3>
 			    </div>
 			    <div class="panel-body">
-					<!--////////////////////////////// Task 2 (a)  //////////////////////////-->
-          <?php
-
-        function add_3_by_val($value) {
-          $value += 3;
-          echo '<p>Number: ' . $value . "</p>";
-        }
-        $number = 5;
-        add_3_by_val($number);
-        echo '<p>Number: ' . $number . "</p>";
 
 
 
-         ?>
+
+
 
 
 			    </div>
@@ -41,7 +34,8 @@
 	</div>
 
 
-	<iframe src="txt/task2.txt" height="400" scrolling="yes" width="1200px">
+
+	<iframe src="txt/task10.txt" height="400" scrolling="yes" width="1200px">
 		<p>Your browser does not support iframes.</p></iframe>
 
 </div>

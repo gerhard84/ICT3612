@@ -22,9 +22,6 @@
                 <li><a href="task9.php">Task 9</a></li>
                 <li><a href="task10.php">Task 10</a></li>
                 <li><a href="task11.php">Task 11</a></li>
-                <li><a href="task12.php">Task 12</a></li>
-                <li><a href="task13.php">Task 13</a></li>
-                <li><a href="task14.php">Task 14</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

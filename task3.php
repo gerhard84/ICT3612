@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <title>Task 1</title>
+    <title>Task 3</title>
 </head>
 <body>
 <?php include_once("analyticstracking.php") ?>
@@ -24,9 +24,7 @@
 			        <h3 class="panel-title">Task 3 (a) -  Pizza Toppings</h3>
 			    </div>
 			    <div class="panel-body">
-
-
-
+            <!-- Form for toppings check box -->
           <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
           	<p>
           		Which extra toppings whould you like?<br/>
@@ -113,7 +111,7 @@
 
                         //Get ampunt of aruments and divide by values to calculate average
                         $average = array_sum(func_get_args())/func_num_args();
-                        
+
                         //Display Number of argumets in array and average
                         echo "The average of $numargs numbers must be calculated.<br/>";
                         echo "Average = $average";
