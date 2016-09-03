@@ -9,6 +9,7 @@
 <?php include_once("analyticstracking.php") ?>
 <div class="menu">
     <?php include 'includes/menu.php';?>
+    <?php include 'includes/classes/coffee.class.php';?>
 </div>
 
 
@@ -22,7 +23,13 @@
 			    </div>
 			    <div class="panel-body">
 
+            <?php
+              // Create new instance of Animal and assign a value
+              $display = new Coffee('Jamaica', 'MoccaJava', 'dark');
 
+              // Call the Display method and display to screen
+              echo $display->displayBrand();
+              ?>
 
 
 
@@ -43,7 +50,13 @@
 
 
 
+                    <?php
+                      // Create new instance of Animal and assign a value
+                      $display2 = new Coffee('Kenya', 'Kuma', 'medium');
 
+                      // Call the Display method and display to screen
+                      echo $display2->displayBrand();
+                      ?>
 
 
 
