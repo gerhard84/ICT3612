@@ -1,5 +1,68 @@
 //////////////////////////////Task4 ( a ) //////////////////////////
 
+// Animal class
+<?php
 
+  class Animal {
 
+    protected $name;
+
+    public function __construct($name) {
+        $this->name = $name;
+    }
+
+    public function getName() {
+            return $this->name;
+    }
+
+    public function setName($value) {
+            $this->name = $value;
+    }
+
+    public function greet()  {
+      $output = "Hello, I'm some sort of animal and my name is " . $this->name;
+      return $output;
+    }
+
+    }
+?>
+
+//Code to display on page
+  <?php
+// Create new instance of Animal and assign a value
+    $display = new Animal('Jock');
+
+// Call the Display method and display to screen
+    echo $display->greet();
+    ?>
+
+//////////////////////////////Task4 ( b ) //////////////////////////
+
+// Dog Class
+<?php
+  class Dog extends Animal{
+
+    private $type;
+
+    public function __construct($name, $type) {
+      $this->type = $type;
+
+// Call Animal constructor to finish initialization
+    parent::__construct($name);
+    }
+
+    public function getType() {
+          return $this->type;
+    }
+
+    public function setType($value) {
+          $this->type = $value;
+    }
+
+    public function Greet()  {
+      $output2 = "Hello, I'm a " . $this->type . ' and my name is ' . $this->name;
+      return $output2;
+    }
+    }
+?>
 ///////////////////////////////////////////////////////////////////
