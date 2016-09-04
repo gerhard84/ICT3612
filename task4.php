@@ -50,10 +50,6 @@
                     echo $display2->greet();
                      ?>
 
-
-
-
-
                     </div>
           			</div>
           		</div>

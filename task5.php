@@ -12,7 +12,6 @@
     <?php include 'includes/classes/coffee.class.php';?>
 </div>
 
-
 <div class="container">
   <!--////////////////////////////// Task 5 (a)  //////////////////////////-->
 	<div class="row">
@@ -24,16 +23,12 @@
 			    <div class="panel-body">
 
             <?php
-              // Create new instance of Animal and assign a value
+              // Create new instance of Coffee and assign values
               $display = new Coffee('Jamaica', 'MoccaJava', 'dark');
 
               // Call the Display method and display to screen
               echo $display->displayBrand();
               ?>
-
-
-
-
 
 			    </div>
 			</div>
@@ -48,23 +43,18 @@
                   </div>
                   <div class="panel-body">
 
-
-
                     <?php
-                      // Create new instance of Animal and assign a value
+                      // Create new instance of Coffee and assign values
                       $display2 = new Coffee('Kenya', 'Kuma', 'medium');
 
                       // Call the Display method and display to screen
                       echo $display2->displayBrand();
                       ?>
 
-
-
                     </div>
           			</div>
           		</div>
           	</div>
-
 
 	<iframe src="txt/task5.txt" height="400" scrolling="yes" width="1200px">
 		<p>Your browser does not support iframes.</p></iframe>

@@ -1,6 +1,5 @@
-//////////////////////////////Task4 ( a ) //////////////////////////
+//////////////////////////////Task 4 ( Animal Class ) //////////////////////////
 
-// Animal class
 <?php
 
   class Animal {
@@ -24,8 +23,10 @@
       return $output;
     }
 
-    }
+  }
 ?>
+
+//////////////////////////////Task 4 ( a ) //////////////////////////
 
 //Code to display on page
   <?php
@@ -36,9 +37,8 @@
     echo $display->greet();
     ?>
 
-//////////////////////////////Task4 ( b ) //////////////////////////
+//////////////////////////////Task 4 ( Dog Class ) //////////////////////////
 
-// Dog Class
 <?php
   class Dog extends Animal{
 
@@ -63,6 +63,16 @@
       $output2 = "Hello, I'm a " . $this->type . ' and my name is ' . $this->name;
       return $output2;
     }
-    }
+  }
 ?>
+
+//////////////////////////////Task 4 ( b ) //////////////////////////
+//Code to display on page
+  <?php
+// Crerate new instance of Animal and assign a value
+    $display2 = new Dog('Jock', 'dog');
+// Call the Display method and dispaly to screen
+    echo $display2->greet();
+    ?>
+
 ///////////////////////////////////////////////////////////////////
