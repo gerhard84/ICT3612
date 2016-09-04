@@ -1,5 +1,39 @@
+//////////////////////////////Task 7 ( validate_email Function ) //////////////////////////
+
+<?php
+
+  function validate_email($email_address) {
+
+    if( !preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $email_address))  {
+        return false;
+      } else {
+        return true;
+      }
+    }
+?>
+
 //////////////////////////////Task 7 ( a ) //////////////////////////
 
+<?php
 
+//Assignment for valid email
+  $email_address = 'student@unisa.ac.za';
 
+  if (validate_email($email_address) == true) {
+    echo $email_address . ' is valid</br>';
+    } elseif (validate_email($email_address) == false) {
+        echo $email_address . ' is invalid</br>';
+      }
+ ?>
+
+ <?php
+ //Assignment for invalid email
+  $email_address = '_student@unisa.ac.za';
+
+  if (validate_email($email_address) == true) {
+    echo $email_address . ' is valid</br>';
+    } elseif (validate_email($email_address) == false) {
+        echo $email_address . ' is invalid</br>';
+      }
+?>
 ////////////////////////////////////////////////////////////////////

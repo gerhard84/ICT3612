@@ -9,6 +9,8 @@
 <?php include_once("analyticstracking.php") ?>
 <div class="menu">
     <?php include 'includes/menu.php';?>
+    <?php include 'includes/functions/validate_email.php';?>
+
 </div>
 
 
@@ -21,6 +23,28 @@
 			        <h3 class="panel-title">Task 7 (a) -  Validate email - Check</h3>
 			    </div>
 			    <div class="panel-body">
+
+            <?php
+            //Assignment for valid email
+            $email_address = 'student@unisa.ac.za';
+
+            if (validate_email($email_address) == true) {
+              echo $email_address . ' is valid</br>';
+            } elseif (validate_email($email_address) == false) {
+              echo $email_address . ' is invalid</br>';
+            }
+             ?>
+
+             <?php
+             //Assignment for invalid email
+             $email_address = '_student@unisa.ac.za';
+
+             if (validate_email($email_address) == true) {
+               echo $email_address . ' is valid</br>';
+             } elseif (validate_email($email_address) == false) {
+               echo $email_address . ' is invalid</br>';
+             }
+              ?>
 
 
 
