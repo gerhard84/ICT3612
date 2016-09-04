@@ -10,6 +10,7 @@
 <div class="menu">
     <?php include 'includes/menu.php';?>
     <?php include 'includes/functions/validate_email.php';?>
+    <?php include 'includes/functions/validate_first_five.php';?>
 
 </div>
 
@@ -45,13 +46,6 @@
                echo $email_address . ' is invalid</br>';
              }
               ?>
-
-
-
-
-
-
-
 			    </div>
 			</div>
 		</div>
@@ -64,13 +58,18 @@
                       <h3 class="panel-title">Task 7 (b) -  Validate email - Alpha Numeric</h3>
                   </div>
                   <div class="panel-body">
+                    <?php
+                    // Create variables to test
+                    $range1 = 'A1357';
+                    $range2 = '#5678';
+                    $range3 = '123456';
 
+                    // Use the Function and pass in the variables
+                    validate_first_five($range1);
+                    validate_first_five($range2);
+                    validate_first_five($range3);
 
-
-
-
-
-
+                     ?>
                     </div>
           			</div>
           		</div>
