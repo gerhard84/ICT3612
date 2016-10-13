@@ -1,5 +1,7 @@
 //////////////////////////////Task 4 ( Animal Class ) //////////////////////////
 
+Path to class = 'includes/classes/animal.class.php'
+
 <?php
 
   class Animal {
@@ -38,6 +40,8 @@
     ?>
 
 //////////////////////////////Task 4 ( Dog Class ) //////////////////////////
+
+Path to class = 'includes/classes/dog.class.php'
 
 <?php
   class Dog extends Animal{

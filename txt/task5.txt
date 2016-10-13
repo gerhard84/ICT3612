@@ -1,5 +1,7 @@
 //////////////////////////////Task5 ( Coffee Class ) //////////////////////////
 
+Path to class = 'includes/classes/coffee.class.php'
+
 <?php
   class Coffee
   {

@@ -1,5 +1,167 @@
 //////////////////////////////Task9 (a) //////////////////////////
 
+<!-- SQL - Get all Players -->
+<?php
+$query= 'SELECT * FROM Player_Team';
+$statement = $db->prepare($query);
+$statement->execute();
+$players = $statement->fetchAll(PDO::FETCH_ASSOC);
+?>
 
+<?php
+foreach ($players as $player) {
+  ?>
+  <form action=task9.php method=post>
+    <tr>
+      <td><?php echo $player['Player']; ?></td>
+      <td><?php echo $player['BirthCountry']; ?></td>
+    </tr>
+  </form>
+<?php
+}
+?>
+
+//////////////////////////////Task9 (b) //////////////////////////
+
+<!-- SQL - Get all Players from Argentina-->
+<?php
+$query= "SELECT * FROM Player_Team where BirthCountry = 'Argentina'";
+$statement = $db->prepare($query);
+$statement->execute();
+$players = $statement->fetchAll(PDO::FETCH_ASSOC);
+?>
+<!-- Create Table -->
+<table class='table table-bordered table-hover'>
+  <tr>
+    <th>Name</th>
+    <th>Country</th>
+  </tr>
+<?php
+foreach ($players as $player) {
+  ?>
+  <form action=task9.php method=post>
+    <tr>
+      <td><?php echo $player['Player']; ?></td>
+      <td><?php echo $player['BirthCountry']; ?></td>
+    </tr>
+  </form>
+  <?php
+}
+?>
+
+//////////////////////////////Task9 (c) //////////////////////////
+
+<!-- Add new Player PHP-->
+<?php
+
+if(isset($_POST['submit'])){
+// Get the player to insert
+    $player = $_POST['player'];
+    $country = $_POST['country'];
+    $team = $_POST['team'];
+
+// Add new Player SQL
+      require_once 'includes/DB/database.php';
+        $query = "INSERT INTO Player_Team
+                     (Player, BirthCountry, Team)
+                  VALUES
+                     ('$player', '$country', '$team')";
+        $db->exec($query);
+    }
+?>
+
+//////////////////////////////Task9 edit_player.php //////////////////////////
+
+Path to page = 'edit_player.php'
+
+<?php
+
+      require_once 'includes/DB/database.php';
+
+if(isset($_GET['player_edit']) && !empty($_GET['player_edit']))
+      {
+        $player_edit = htmlspecialchars($_GET['player_edit']);
+		    $statement=$db->prepare('SELECT Player, BirthCountry, Team
+                                    FROM Player_Team
+                                    WHERE Player = :player');
+		    $statement->execute(array(':player'=>$player_edit));
+		    $result=$statement->fetch(PDO::FETCH_ASSOC);
+		    extract($result);
+      }
+
+         if(isset($_POST['update']))
+         {
+           $playername = htmlspecialchars($_POST['player_name']);
+           $playercountry = htmlspecialchars($_POST['player_country']);
+           $playerteam = htmlspecialchars($_POST['player_team']);
+
+
+           $statement = $db->prepare('UPDATE Player_Team
+                                      SET Player = :pname,
+                                          BirthCountry = :pcountry,
+                                          Team = :pteam
+                                    WHERE Player = :player');
+          $statement->bindParam(':pname',$playername);
+          $statement->bindParam(':pcountry',$playercountry);
+          $statement->bindParam(':pteam',$playerteam);
+          $statement->bindParam(':player',$player_edit);
+          $statement->execute();
+          echo "<meta http-equiv=\"refresh\" content=\"0;URL=task9.php\">";
+         }
+ ?>
+
+ //////////////////////////////Task9 delete_player.php //////////////////////////
+
+ Path to page = 'delete_player.php'
+
+ <?php
+ error_reporting(E_ALL);
+ ini_set('display_errors', 1);
+  ?>
+
+ <?php
+ // Get IDs
+     $player = htmlspecialchars($_GET['player_del']);
+
+ // Delete the player from the database
+     require_once ('includes/DB/database.php');
+     $query = "DELETE FROM Player_Team
+               WHERE Player = :player";
+
+         $statement = $db->prepare($query);
+         $statement->bindValue(':player', $player);
+         $statement->execute();
+         $statement->closeCursor();
+ // display the Task 9 page
+ echo "<meta http-equiv=\"refresh\" content=\"0;URL=task9.php\">";
+ ?>
+
+
+//////////////////////////////Task9 (d and e) //////////////////////////
+
+<?php
+// Get all Players
+  $statement = $db->prepare('SELECT Player, BirthCountry, Team FROM Player_Team');
+  $statement->execute();
+  $players = $statement->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+<!-- Create table-->
+<?php
+  foreach ($players as $player) {
+?>
+  <form action="" method="post">
+    <tr>
+      <td><?php echo htmlentities($player['Player']); ?></td>
+      <td><?php echo htmlentities($player['BirthCountry']); ?></td>
+      <td><a  href="edit_player.php?player_edit=<?php echo ($player['Player']);?>" title="Edit" ><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+      <td><a  href="delete_player.php?player_del=<?php echo ($player['Player']);?>" title="Delete" onclick="return confirm('Confirm Player Delete ?')"><span class="glyphicon glyphicon-remove-circle"></span> Delete</td>
+    </tr>
+  </form>
+  <?php
+  }
+  // CLOSE DB
+  $db = null;
+  ?>
 
 /////////////////////////////////////////////////////////////////

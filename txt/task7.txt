@@ -1,5 +1,7 @@
 //////////////////////////////Task 7 ( validate_email Function ) //////////////////////////
 
+Path to function = 'includes/functions/validate_email.php'
+
 <?php
 
   function validate_email($email_address) {
@@ -38,6 +40,8 @@
 ?>
 
 //////////////////////////////Task 7 ( validate_first_five Function ) //////////////////////////
+
+Path to function = 'includes/functions/validate_first_five.php'
 
 <?php
 //Function to validate first 5 charaters of an variable

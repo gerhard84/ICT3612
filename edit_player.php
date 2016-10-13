@@ -1,51 +1,49 @@
-<<?php
+<?php
 
       require_once 'includes/DB/database.php';
 
 if(isset($_GET['player_edit']) && !empty($_GET['player_edit']))
       {
-        $player_edit = $_GET['player_edit'];
-		    $stmt_edit = $db->prepare('SELECT Player, BirthCountry, Team
+        $player_edit = htmlspecialchars($_GET['player_edit']);
+		    $statement=$db->prepare('SELECT Player, BirthCountry, Team
                                     FROM Player_Team
-                                    WHERE Player = :pid');
-		    $stmt_edit->execute(array(':pid'=>$player_edit));
-		    $edit_row = $stmt_edit->fetch(PDO::FETCH_ASSOC);
-		    extract($edit_row);
+                                    WHERE Player = :player');
+		    $statement->execute(array(':player'=>$player_edit));
+		    $result=$statement->fetch(PDO::FETCH_ASSOC);
+		    extract($result);
       }
 
          if(isset($_POST['update']))
          {
-           $playername = $_POST['player_name'];
-           $playercountry = $_POST['player_country'];
-           $playerteam = $_POST['player_team'];
+           $playername = htmlspecialchars($_POST['player_name']);
+           $playercountry = htmlspecialchars($_POST['player_country']);
+           $playerteam = htmlspecialchars($_POST['player_team']);
 
 
            $statement = $db->prepare('UPDATE Player_Team
                                       SET Player = :pname,
                                           BirthCountry = :pcountry,
                                           Team = :pteam
-                                    WHERE Player = :pid');
+                                    WHERE Player = :player');
           $statement->bindParam(':pname',$playername);
           $statement->bindParam(':pcountry',$playercountry);
           $statement->bindParam(':pteam',$playerteam);
-          $statement->bindParam(':pid',$player_edit);
-
-           $statement->execute();
-           include'task9.php';
+          $statement->bindParam(':player',$player_edit);
+          $statement->execute();
+          echo "<meta http-equiv=\"refresh\" content=\"0;URL=task9.php\">";
          }
-
  ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <title>Task 9</title>
 </head>
 <body>
 <div class="menu">
-      <?php include 'includes/menu.php';?>
+      <?php include 'includes/navbar.php';?>
 </div>
 <div class="container">
   <div class="row">

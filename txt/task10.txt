@@ -1,4 +1,133 @@
 //////////////////////////////Task10 (a) //////////////////////////
+<!--Get file list from directory-->
+<?php
+$dir = opendir('txt/task10/');
+while ($file = readdir($dir)) {
+  if ($file == '.' || $file == '..') {
+    continue;
+  }
+  echo $file . "</br>";
+}
+closedir($dir);
+?>
 
+//////////////////////////////Task10 (b) - upload.php //////////////////////////
+
+Path to file = includes/upload.php
+
+<?php
+include("../includes/functions/send_email.php");
+
+$target_dir = "../txt/task10/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$uploadError = "Error";
+$fileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
+if(isset($_POST["submit"])) {
+        $uploadOk = 1;
+      }
+
+// Check if file already exists
+if (file_exists($target_file)) {
+    $uploadOk = 0;
+    $uploadError = "Sorry, file already exists.";
+
+}
+// Check file size
+if ($_FILES["fileToUpload"]["size"] > 100000) {
+    $uploadOk = 0;
+    $uploadError = "Sorry, your file is too large.";
+
+}
+// Only Allow TXT files
+if($fileType != "txt" ) {
+    $uploadOk = 0;
+    $uploadError = "Sorry, only TXT files are allowed.";
+
+}
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo $uploadError;
+
+
+// if everything is ok, try to upload file and send email
+} else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+
+        send_email($target_file);
+
+        echo "<meta http-equiv=\"refresh\" content=\"0;URL=task10.php\">";
+    } else {
+        $uploadError = "Sorry, there was an error uploading your file.";
+    }
+}
+?>
+
+//////////////////////////////Task10 (b) - send_email.php //////////////////////////
+
+Path to file = includes/functions/send_email.php
+
+<?php
+require("includes/PHPMailer/PHPMailerAutoload.php");
+
+function send_email($target_file) {
+  $mail = new PHPMailer;
+
+//$mail->SMTPDebug = 3;
+
+//$mail->isSMTP();
+$mail->Host = 'smtp.gerhard-goossens.co.za';
+$mail->SMTPAuth = true;
+$mail->Username = 'webmaster@gerhard-goossens.co.za';
+$mail->Password = 'G3rhaAr6ict3612';
+$mail->SMTPSecure = 'tls';
+$mail->Port = 587;
+
+$mail->setFrom('webmaster@gerhard-goossens.co.za', 'Gerhard Goossens');
+$mail->addAddress('"12345@wherever.com', 'ICT3612');
+//$mail->addAddress('gerhard.g84@gmail.com');
+$mail->addReplyTo('webmaster@gerhard-goossens.co.za', 'Gerhard Goossens');
+//$mail->addCC('cc@example.com');
+$mail->addBCC('gerhard.g84@gmail.com');
+
+//$mail->addAttachment('/var/tmp/file.tar.gz');
+//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');
+$mail->isHTML(true);
+
+$mail->Subject = 'Your resent file upload';
+$mail->Body    = 'You recently uploaded a file to the portfolio website. </br>
+                  The filename is: ' .$target_file;
+//$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+if(!$mail->send()) {
+    echo 'Message could not be sent.';
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+} else {
+    echo 'Message has been sent';
+}
+}
+?>
+
+//////////////////////////////Task10 (c) - Display file content //////////////////////////
+
+<?php
+$ctime = 0;
+foreach (glob('txt/task10/*.txt') as $file)
+{
+  if ($ctime > filectime($file))
+  {
+    $match = $file;
+    $ctime = filectime($file);
+  }
+}
+echo "<strong>The contents of the file is:</strong></br>";
+$latestFile = fopen("$file", "r") or die("Please upload a file");
+while (!feof($latestFile)) {
+  $line = fgets($latestFile);
+  echo "$line</br>";
+}
+fclose($latestFile);
+?>
 
 ///////////////////////////////////////////////////////////////////////

@@ -1,5 +1,7 @@
 //////////////////////////////Task 6 ( Registration Class ) //////////////////////////
 
+Path to class = 'includes/classes/registration.class.php'
+
 <?php
   class Registration{
 
