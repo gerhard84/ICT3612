@@ -1,5 +1,7 @@
 <?php $pageTitle = "Task 2";?>
 <?php include './includes/header.php';?>
+
+
 <body>
 	<div class="container">
 		<div class="row">
@@ -10,21 +12,33 @@
 					</div>
 					<div class="panel-body">
 						<!--////////////////////////////// Task 2 (a)  //////////////////////////-->
+
 						<?php
-						function add_3_by_val($value) {
-							$value += 3;
-							echo '<p>Number: ' . $value . "</p>";
+						function square1($number) {
+							return $number * $number;
 						}
-						$number = 5;
-						add_3_by_val($number);
-						echo '<p>Number: ' . $number . "</p>";
+						$val = 5;
+						$val = square1($val);
+						echo "The square of 5 is " . $val;
 						?>
+
+					</br>
+
+						<?php
+						function square2(&$number) {
+							$number = $number * $number;
+						}
+						$val = 9;
+						square2($val);
+						echo "The square of 9 is " . $val;
+						?>
+						
 					</div>
 				</div>
 			</div>
 		</div>
 		<iframe src="txt/task2.txt" height="400" scrolling="yes" width="1200px">
-			<p>Your browser does not support iframes.</p></iframe>			
+			<p>Your browser does not support iframes.</p></iframe>
 		</div>
 	</body>
 	</html>

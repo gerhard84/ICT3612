@@ -1,25 +1,23 @@
-<!--////////////////////////////// Task 1 //////////////////////////-->
+<!--////////////////////////////// Task 2 //////////////////////////-->
+
 <?php
-
-// Declare variables for Task 1
-
-$number1 = counter(5, 12);
-$number2 = counter(12, 12);
-$number3 = counter(25, 30);
-
-// Function for Task 1
-function counter($num1, $num2) {
- $sum = 0;
- for ($i = $num1; $i <= $num2; $i++) {
-	 $sum += $i;
-
-	}
-	return $sum;
+function square1($number) {
+  return $number * $number;
 }
-
-// Display for Task 1
-echo "The sum of the values from 5 to 12 is $number1. <br/>";
-echo "The sum of the values from 12 to 12 is $number2. <br/>";
-echo "The sum of the values from 25 to 165 is $number3. <br/>";
-
+$val = 5;
+$val = square1($val);
+echo "The square of 5 is " . $val;
 ?>
+
+</br>
+
+<?php
+function square2(&$number) {
+  $number = $number * $number;
+}
+$val = 9;
+square2($val);
+echo "The square of 9 is " . $val;
+?>
+
+<!--//////////////////////////////////////////////////////////////-->

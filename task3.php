@@ -26,7 +26,7 @@
             </p>
             <?php
             // Function to check what toppings is selected on form submit
-            function IsChecked($chkname,$value)
+            function toppings($chkname,$value)
             {
               if(!empty($_POST[$chkname]))
               {
@@ -58,19 +58,19 @@
               }
 
               //Checking whether a particular check box is selected with Function
-              if(IsChecked('formToppings','Pepperoni'))
+              if(toppings('formToppings','Pepperoni'))
               {
                 echo ' Pepperoni, ';
               }
-              if(IsChecked('formToppings','Sausage'))
+              if(toppings('formToppings','Sausage'))
               {
                 echo ' Sausage, ';
               }
-              if(IsChecked('formToppings','Bacon'))
+              if(toppings('formToppings','Bacon'))
               {
                 echo ' Bacon, ';
               }
-              if(IsChecked('formToppings','Pineapple'))
+              if(toppings('formToppings','Pineapple'))
               {
                 echo ' Pineapple, ';
               }

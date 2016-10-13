@@ -1,56 +1,56 @@
 //////////////////////////////Task3 ( a ) //////////////////////////
 
-<?php
 // Function to check what toppings is selected on form submit
-function IsChecked($chkname,$value)
+
+function toppings($chkname,$value)
 {
-    if(!empty($_POST[$chkname]))
+  if(!empty($_POST[$chkname]))
+  {
+    foreach($_POST[$chkname] as $chkval)
     {
-        foreach($_POST[$chkname] as $chkval)
-        {
-            if($chkval == $value)
-            {
-                return true;
-            }
-        }
+      if($chkval == $value)
+      {
+        return true;
+      }
     }
-    return false;
+  }
+  return false;
 }
 
-  // Submit button action
-  if(isset($_POST['formSubmit']))
-    {
-    $aToppings = $_POST['formToppings'];
+// Submit button action
+if(isset($_POST['formSubmit']))
+{
+  $aToppings = $_POST['formToppings'];
 
-    if(empty($aToppings))
-        {
-      echo("<p>You didn't select any toppings.</p>\n");
-    }
-        else
-        {
-            $N = count($aToppings);
-
-      echo("<p>You selected $N extra toppings(s): ");
-    }
-
-        //Checking whether a particular check box is selected with Function
-        if(IsChecked('formToppings','Pepperoni'))
-        {
-            echo ' Pepperoni is checked. ';
-        }
-        if(IsChecked('formToppings','Sausage'))
-        {
-            echo ' Sausage is checked. ';
-        }
-        if(IsChecked('formToppings','Bacon'))
-        {
-            echo ' Bacon is checked. ';
-        }
-        if(IsChecked('formToppings','Pineapple'))
-        {
-            echo ' Pineapple is checked. ';
-        }
+  if(empty($aToppings))
+  {
+    echo("<p>You didn't select any toppings.</p>\n");
   }
+  else
+  {
+    $N = count($aToppings);
+
+    echo("<p>You selected $N extra toppings(s): ");
+  }
+
+  //Checking whether a particular check box is selected with Function
+  if(toppings('formToppings','Pepperoni'))
+  {
+    echo ' Pepperoni, ';
+  }
+  if(toppings('formToppings','Sausage'))
+  {
+    echo ' Sausage, ';
+  }
+  if(toppings('formToppings','Bacon'))
+  {
+    echo ' Bacon, ';
+  }
+  if(toppings('formToppings','Pineapple'))
+  {
+    echo ' Pineapple, ';
+  }
+}
 ?>
 
 //////////////////////////////Task3 ( b ) //////////////////////////
